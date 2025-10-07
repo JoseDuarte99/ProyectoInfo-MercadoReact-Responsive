@@ -1,0 +1,141 @@
+// Import Style
+import style from "./Navbar.module.css"
+
+// Import React
+import { useContext, useState } from "react";
+import { Link } from "react-router";
+
+// Import Components
+import Search from "../Search/Search";
+import CartIcon from "../CartIcon/CartIcon";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import DropdownCategories from "../DropdownCategories/DropdownCategories";
+
+// Import Context
+import SearchContext from "../../context/SearchContext";
+import CartContext from "../../context/CartContext";
+import FilterContext from "../../context/FilterContext";
+import StatusFilterContext from "../../context/StatusFilterContext";
+
+// Import Types
+import { FilterType } from "../../types/OthersTypes"; 
+
+// Import IMG
+import imgLogoMercadoReact from "../../assets/MercadoReactLogo.png"
+import imgLogoSmallMercadoReact from "../../assets/MercadoReactLogoSmall.png"
+import imgShippingFree from "../../assets/EnvioGratis.png";
+import imgSearch from "../../assets/lupa.svg";
+import imglocation from "../../assets/location.svg";
+
+
+
+function Navbar() {
+
+    // Dropdown Menu Status
+    const [menuValue, setMenuValue] = useState(false); 
+
+
+    // Search Context 
+    const search = useContext(SearchContext);
+    if (!search){throw new Error('useCart must be used within a CartProvider')}
+    const {onSearch, setOnSearch} = search;
+
+    // Cart Context 
+    const productCart = useContext(CartContext);
+    if (!productCart){throw new Error('ERROR EN EL CARRITO DE COMPRAS')}
+
+    const quantityProductCart = new Set(productCart.contextState.map(p => p.idProduct));
+
+    // Filter Context 
+    const filtersProduct = useContext(FilterContext);
+    if (!filtersProduct){throw new Error('ERROR EN LOS FILTROS')}
+    const {addFilterProducts, resetFilterProducts} = filtersProduct;
+
+    // Status Filter Context 
+    const statusFiltersProduct = useContext(StatusFilterContext);
+    if (!statusFiltersProduct){throw new Error('ERROR EN EL ESTADO DEL FILTRO')}
+    const { setFilteringState } = statusFiltersProduct;
+
+    return (
+        <header className={style.header}>
+            <nav className={style.navbar}>
+                <Link to="/" 
+                    className={style.logo} 
+                    onClick={() => {setFilteringState(false); resetFilterProducts(FilterType.Reset, "")}}> 
+                    <img src={imgLogoMercadoReact} alt="Logo Mercado React" />
+                </Link>
+                <Link to="/"
+                    className={style.logoSmall} 
+                    onClick={() => {setFilteringState(false); resetFilterProducts(FilterType.Reset, "")}}> 
+                    <img src={imgLogoSmallMercadoReact} alt="Logo Mercado React" />
+                </Link>
+                <div className={style.search}>
+                    <Search onSearch={onSearch} setOnSearch={setOnSearch} placeholder="Buscar products, marcas y más…" imgSearch= {imgSearch}/>
+                </div>
+                <img src={imgShippingFree} alt="Logo de Mercado Libre" className={style.advertising} />
+                <div className={style.location}>
+                    <img src={imglocation} alt="Ubicacion" />
+                    <Link to="/ayuda">
+                        <span>Enviar a</span>
+                        <span>Barranqueras</span>
+                    </Link> 
+                    <span>
+                        <svg viewBox="0 0 20 20">
+                            <polyline points="7,5 13,10 7,15" fill="none" stroke="black" strokeWidth={1} />
+                        </svg> 
+                    </span>
+                </div>
+                <ul className={style.button}>
+                    <li className={style.buttonCategories}> Categorías               
+                        <span>
+                            <svg viewBox="0 0 20 20">
+                                <polyline points="5,7 10,13 15,7" fill="none" stroke="black" strokeWidth="1" />
+                            </svg>
+                        </span>
+                        <div className={style.dropdownCategories}>
+                            <DropdownCategories />
+                        </div>
+                    </li>
+                    <li onClick={() => {addFilterProducts(FilterType.Promotion, "Oferta"); setFilteringState(true)}}> <Link to="/">Ofertas</Link> </li>
+                    <li onClick={() => {addFilterProducts(FilterType.Promotion, "Cupón"); setFilteringState(true)}}> <Link to="/">Cupones</Link> </li>
+                    <li onClick={() => {addFilterProducts(FilterType.Category, "Supermercado"); setFilteringState(true)}}> <Link to="/">Supermercado</Link> </li>
+                    <li onClick={() => {addFilterProducts(FilterType.Category, "Moda"); setFilteringState(true)}}> <Link to="/">Moda</Link> </li>
+                    <li
+                        className={style.buttonMercadoPlay}>
+                        <span>GRATIS</span>
+                        <Link to="/ayuda">Mercado React</Link> 
+                    </li>
+                    <li> <Link to="/publicarProducto">Vender</Link> </li>
+                    <li> <Link to="/ayuda">Ayuda</Link> </li>
+                </ul>
+                <div className={style.login}>
+                    <ul>
+                        <li> <Link to="/ayuda">Creá tu cuenta</Link> </li>
+                        <li> <Link to="/ayuda">Ingresá</Link> </li> 
+                        <li> <Link to="/ayuda">Mis compras</Link> </li>
+                    </ul>
+                    <CartIcon quantity={quantityProductCart.size} className={style.cart}/> 
+                </div>  
+                <CartIcon quantity={quantityProductCart.size} className={style.cartSmall}/>                 
+
+                <div className={style.menu}>
+                    <input type="checkbox" id="menu" checked={menuValue} className={style.menuInput} onChange={() => setMenuValue(!menuValue)} />   
+                    <label htmlFor="menu" className={style.activeMenu}>
+                        { menuValue   
+                        ?   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                            </svg>
+                        :   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M4 6h16v1H4zM4 11h16v1H4zM4 16h16v1H4z" />
+                            </svg>}
+                    </label>
+                    <div className={style.itemsMenu}>
+                        <DropdownMenu onClickDropdownMenu={() => setMenuValue(!menuValue)}/>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    )
+}
+
+export default Navbar

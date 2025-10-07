@@ -1,0 +1,113 @@
+.container{
+    font-family: "Proxima Nova",Arial,sans-serif,sans-serif;
+    font-size: clamp(0.5rem, 2vw, 0.6rem);
+    border-bottom: 1px solid #aaa8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-self: center;
+    background: #fff;
+    padding: 5px 10px 30px 10px;
+    min-width: 150px;
+    max-width: 200px;
+    margin-top: 10px;
+}
+
+.container a {
+    text-decoration: none;
+    width: 90%;
+}
+
+.imgContent{
+    height: 150px;
+    justify-self: center;
+}
+.imgContent > img {
+    height: 100%;
+    min-width: 100px;
+    max-width: 150px;
+}
+
+.container > a > h3 {
+    font-weight: lighter;
+    color: #404040;
+    font-size: 1.6em;
+}
+
+.previousPrice{
+    color: #737373;
+    font-size: 1.5em;
+    text-decoration: line-through solid #5f5f5f 1px;
+    margin: 0;
+    padding: 5px 0 0 0;
+}
+
+.container > a > h4 {
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+
+.priceInfo {
+    color: #00a650;
+    font-size: 1.5em;
+}
+
+.freeShipping {
+    font-weight: bold;
+    color: #00a650;
+    font-size: 1.6em;
+}
+
+/* Categorie and Buttons --------------------------------- */
+.container > div {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    padding-top: 10px;
+}
+
+.container > div > span{
+    color: #5f5f5f;
+    font-size: 1.2em;
+    padding-right: 15px;
+    align-self: center;
+}
+
+.container > div > button {
+    height: 100%;
+    width: 15%;
+    border-radius: 20%;
+    border: none;
+}
+
+.add {
+    background: #bedbff;
+    color: #007595;
+    cursor: pointer;
+}
+.remove {
+    background: #ffc9c9;
+    color: #c10007;
+    cursor: pointer;
+}
+.removeNone {
+    background: #ebe6e7;
+    color: #364153;
+    cursor: not-allowed;
+}
+
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+
+        @media (max-width: 650px) {
+            .container {
+                max-width: none;
+                width: 100%;
+            }
+            .container a {
+                align-self: center;
+            }
+        }   

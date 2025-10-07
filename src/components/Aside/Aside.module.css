@@ -1,0 +1,214 @@
+.aside {
+    font-family: "Proxima Nova",Arial,sans-serif,sans-serif; 
+    background: #fff;
+    height: fit-content;
+    width: 25vw;
+    min-width: 100px;
+    max-width: 180px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #0002;
+    color: #525252;
+    container: aside / inline-size;
+}
+
+.aside h4 {
+    width: 100%;
+    justify-self: center;
+    background-color: #e5e7eb;
+    padding: 2px 5px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: 2px solid #52525233;
+}
+
+.aside p {
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #737373;
+    width: fit-content;
+    margin-bottom: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+.aside ul {
+    list-style: none;
+    padding: 8px;
+    background: #e5e7eb55;
+    border: 1px solid #52525233;
+    border-radius: 5px
+}
+.aside ul li {
+    font-size: 0.8rem;
+    padding-bottom: 3px;
+}
+
+.aside ul li:hover {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+
+/* Remove Filter -------------------- */
+.removeFilter {
+    display: flex;
+    justify-content: space-between;
+    justify-self: start;
+    width: 100%;
+    height: fit-content;
+    color: #525252;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #52525233;
+    background-color: #e5e7eb;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    margin-top: 10px;
+}
+.removeFilter svg {
+    height: 15px;
+}
+.removeFilter span {
+    align-self: center;
+    font-size: 0.8rem;
+}
+.removeFilter:hover {
+    background-color: #d4d4d4;
+    color: #525252; 
+}
+
+/* Price Min Max -------------------- */
+
+.priceMinMax {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px ;
+}
+
+.priceMinMax input {
+    width: 30%;
+    padding-left: 5px;
+    color: #525252;
+    border-radius: 5px;
+    border: none;
+    border-left: 1px solid #0005;
+    border-bottom: 1px solid #0005;
+}
+
+/* Chrome, Safari, Edge */
+.priceMinMax input[type=number]::-webkit-inner-spin-button,
+.priceMinMax input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.notAllowed {
+    border-radius: 50%;
+    border: none;
+    cursor: not-allowed;
+}
+
+.allowed {
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: #1447e6ee;
+}
+
+.priceMinMax button {
+    width: 35px
+}
+
+
+
+
+/* Reset Filters -------------------- */
+.resetFilters {
+    display: flex;
+    justify-self: center;
+    width: fit-content;
+    justify-content: center;
+    height: fit-content;
+    color: #525252;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #52525233;
+    background-color: #fff;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    margin-top: 15px;
+}
+.resetFilters svg {
+    height: 20px;
+}
+.resetFilters span {
+    align-self: center;
+    font-size: 0.8rem;
+}
+.resetFilters:hover {
+    background-color: #d4d4d4;
+    color: #525252; 
+    border: none;
+}
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+
+    @container aside (width <= 165px) {
+        .priceMinMax {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .priceMinMax input {
+            width: 90%;
+            height: 20px;
+        }
+
+        .notAllowed,
+        .allowed {
+            align-self: center;
+        }
+    }
+
+    @media (max-width: 450px) {
+        .aside {
+            max-width: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .aside h4 {
+            width: 50%;
+            align-self: center;
+            margin: 5px 0 0 0;
+        }
+        .aside p {
+            padding-left: 10px;
+        }
+        .aside > div {
+            display: flex;
+            justify-content:space-between ;
+            gap: 5px;
+            padding: 0 5px;
+        }
+        .aside > div > span > ul {
+            margin: 0;
+        }
+        .priceMinMax {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .priceMinMax > input {
+            width: 20vw;
+            
+        }
+        .resetFilters {
+            align-self: center;
+            margin: 0 0 5px 0;
+        }
+        
+    }

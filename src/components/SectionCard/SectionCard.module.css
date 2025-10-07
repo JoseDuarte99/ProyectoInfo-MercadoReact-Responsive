@@ -1,0 +1,58 @@
+.container{
+    font-family: "Proxima Nova",Arial,sans-serif,sans-serif;
+    font-size: clamp(0.8rem, 1.3vw, 1.2rem);
+    width: 100%;
+    max-width: 1150px;
+    height: fit-content;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #0002;
+    container-name: section;
+    container-type: inline-size;
+}
+
+.container > div {
+    max-height: 850px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+/* ---------- Hidden Scroll Bar */
+.container > div {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+.container > div::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+        @container section (width < 900px) {
+            .container > div {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }    
+
+        @container section (width < 720px) {
+            .container > div {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }   
+
+        @container section (width < 540px) {
+            .container > div {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }   
+
+        @container section (width < 360px) {
+            .container > div {
+                grid-template-columns: 1fr;
+            }
+        }   

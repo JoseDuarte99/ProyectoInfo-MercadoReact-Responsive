@@ -1,0 +1,23 @@
+// Import Style
+import style from "./NotFound404.module.css"
+
+// Import React
+import { Link } from "react-router"
+
+// Import Svg
+import { NotFound404Svg } from "../../assets/imageSvg"
+
+
+function NotFound404(){
+
+
+    return (
+        <div className={style.notFound404}>
+            <span> {NotFound404Svg()} </span>
+            <h4>Parece que esta página no existe</h4>
+            <Link to="/"> Ir a la página principal</Link>
+        </div>
+    )
+};
+
+export default NotFound404
