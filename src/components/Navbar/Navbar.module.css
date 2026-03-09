@@ -416,7 +416,7 @@
 
         }
         .cartSmall > svg {
-            margin: 0 -20px;
+            margin-left: -15px;
             height: 70%;
         }
 

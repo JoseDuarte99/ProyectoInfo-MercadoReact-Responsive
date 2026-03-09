@@ -60,7 +60,11 @@
     margin: 0;
 }
 
-
+.notResult{
+    font-size: 0.9em;
+    justify-self: center;
+    color: #000a;
+}
 
 /* ------------------ PHONE SCREEN VIEW -------------------------*/
     @media (max-width: 768px) {

@@ -70,7 +70,7 @@ function Navbar() {
                     <img src={imgLogoSmallMercadoReact} alt="Logo Mercado React" />
                 </Link>
                 <div className={style.search}>
-                    <Search onSearch={onSearch} setOnSearch={setOnSearch} placeholder="Buscar products, marcas y más…" imgSearch= {imgSearch}/>
+                    <Search onSearch={onSearch} setOnSearch={setOnSearch} setMenuValue={setMenuValue} placeholder="Buscar products, marcas y más…" imgSearch= {imgSearch}/>
                 </div>
                 <img src={imgShippingFree} alt="Logo de Mercado Libre" className={style.advertising} />
                 <div className={style.location}>

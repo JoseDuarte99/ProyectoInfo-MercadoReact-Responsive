@@ -5,5 +5,6 @@ export type SearchProps = {
     imgSearch?: string;
     onSearch: string;
     setOnSearch: React.Dispatch<React.SetStateAction<string>>;
+    setMenuValue: (value:boolean) => void;
 };
 
