@@ -75,7 +75,7 @@ Este proyecto fue desarrollado utilizando tecnologías modernas del ecosistema R
 ## 🌟 **Final del Proyecto**  
 Aquí puedes ver el resultado final del sitio inspirada en Mercado Libre Argentina:  
 
-https://proyectoinfo-react-meli.vercel.app 
+https://mercadoreact.vercel.app 
 
 ------
 
